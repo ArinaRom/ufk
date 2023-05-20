@@ -1,0 +1,28 @@
+.app {
+	min-height: 100vh;
+	display: grid;
+	grid-template-rows: 64px 1fr max-content;
+}
+
+.logo {
+	display: flex;
+	gap: 15px;
+	align-items: center;
+	cursor: pointer;
+
+
+
+	&__icon {
+		object-fit: contain;
+		height: 100%;
+
+		&__wrapper {
+			height: 50px;
+			z-index: 100;
+		}
+	}
+}
+
+.main {
+	padding: 50px 0;
+}

@@ -1,0 +1,26 @@
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: 'NotoSans', sans-serif;
+}
+
+body {
+	width: 100%;
+	background-color: var(--light-bg);
+	font-size: 16px;
+	-webkit-text-size-adjust: none;
+	scroll-margin-top: 100px;
+	scroll-padding-top: 100px;
+}
+
+a {
+	text-decoration: none;
+	color: var(--special-text-cl);
+}
+
+ul {
+	list-style: none;
+}
