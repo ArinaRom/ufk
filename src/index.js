@@ -21,6 +21,10 @@ const router = createBrowserRouter([
         element: <Notice/>,
       },
       {
+        path: 'notice/list',
+        element: <Notice/>,
+      },
+      {
         path: 'notice/:id',
         element: <Notice/>,
       },

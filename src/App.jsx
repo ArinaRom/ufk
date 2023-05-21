@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Alert, Space } from 'antd';
 import { Outlet, NavLink, useLocation } from 'react-router-dom'
 
 import logo from './assets/images/logo.png'
@@ -30,6 +30,7 @@ const App = () => {
 					<div className="logo__icon__wrapper">
 						<img src={logo} alt="logo" className="logo__icon" />
 					</div>
+					<div className="logo__title">Просто большая биба</div>
 				</NavLink>
 				<Menu
           theme="light"

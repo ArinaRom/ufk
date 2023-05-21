@@ -1,0 +1,11 @@
+.manual-page {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+
+	p {
+		font-size: 18px;
+		line-height: 1.5em;
+		letter-spacing: 0.02em;
+	}
+}
