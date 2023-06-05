@@ -9,20 +9,31 @@ const formItemLayout = {
 
 const NoticeForm = () => {
 	const [form] = Form.useForm();
-	const [formSelectOptions, setFormSelectOptions] = React.useState({
+	const [formSelectOptions] = React.useState({
 		programs: [
-			{ value: 'jack', label: 'Jack' },
-			{ value: 'lucy', label: 'Lucy' },
-			{ value: 'tom', label: 'Tom' },
+			{ value: 'jack', label: 'Электронный бюджет' },
+			{ value: 'lucy', label: 'ЛАНДОКС' },
+			{ value: 'tom', label: '1С' },
 		],
 		errorTypes: [
-			{ value: '400', label: 'Что-то сломалося' },
-			{ value: '500', label: 'Что-то умерло' },
-			{ value: '600', label: 'Что-то погибло' },
+			{ value: '400', label: 'Обращение' },
+			{ value: '500', label: 'Инцидент' },
+			{ value: '600', label: 'Консультация' },
+		],
+		subsystem: [
+			{ value: '400', label: 'Финансы' },
+			{ value: '500', label: 'Закупки' },
+			{ value: '600', label: 'Продажи' },
 		],
 		departments: [
-			{ value: 'first', label: 'я' },
-			{ value: 'second', label: 'не я' },
+			{ value: 'first', label: 'Отдел ПУР' },
+			{ value: 'second', label: 'Отдел ПИАО' },
+			{ value: 'third', label: 'Отдел ПУиО' },
+			{ value: 'fourth', label: 'Отдел ПУДС' },
+			{ value: 'fifth', label: 'Отдел ПУР КС' },
+			{ value: 'sixth', label: 'Отдел НИС' },
+			{ value: 'seventh', label: 'Отдел ПУНФА' },
+			{ value: 'eighth', label: 'Отдел ПУОТ' },
 		]
 	})
 
@@ -41,9 +52,17 @@ const NoticeForm = () => {
         {...formItemLayout}
         name="organization"
         label="Организация"
-        rules={[{ required: true, message: 'Пожалуйста введите имя!' }]}
+        rules={[{ required: true, message: 'Пожалуйста введите организацию!' }]}
       >
         <Input placeholder="Организация" />
+      </Form.Item>
+	  <Form.Item
+        {...formItemLayout}
+        name="name"
+        label="ФИО"
+        rules={[{ required: true, message: 'Пожалуйста введите ваше ФИО!' }]}
+      >
+        <Input placeholder="ФИО" />
       </Form.Item>
 			<Form.Item
 				{...formItemLayout}
@@ -63,6 +82,17 @@ const NoticeForm = () => {
 			</Form.Item>
 			<Form.Item
         {...formItemLayout}
+        name="subsystem"
+        label="Подсистема"
+        rules={[{ required: true, message: 'Пожалуйста выберете подсистему!' }]}
+      >
+        <Select
+					placeholder="Выберете подсистему"
+					options={formSelectOptions.subsystem}
+				/>
+      </Form.Item>
+	  <Form.Item
+        {...formItemLayout}
         name="errorType"
         label="Вид ошибки"
         rules={[{ required: true, message: 'Пожалуйста выберете вид ошибки!' }]}
@@ -72,19 +102,12 @@ const NoticeForm = () => {
 					options={formSelectOptions.errorTypes}
 				/>
       </Form.Item>
-			<Form.Item
-        {...formItemLayout}
-        name="subsystem"
-        label="Подсистема"
-        rules={[{ message: 'Пожалуйста введите подсистему!' }]}
-      >
-        <Input placeholder="Введите подсистему" />
-      </Form.Item>
+		
 			<Form.Item
 				{...formItemLayout}
 				name="department"
 				label="Отдел отправления"
-				rules={[{ required: true, message: 'Пожалуйста выберете отдел отправления!' }]}
+				rules={[{ required: false}]}
 			>
 				<Select
 					showSearch

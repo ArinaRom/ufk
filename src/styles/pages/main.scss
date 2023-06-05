@@ -8,17 +8,17 @@
 	gap: 40px;
 
 	.link {
-		padding: 15px 25px;
-		border: 2px solid var(--accent);
-		border-radius: 40px;
-		color: var(--accent);
-		background-color: transparent;
-		cursor: pointer;
-		position: relative;
-		overflow: hidden;
-		z-index: 2;
-		// transition: color 0.25s ease-in-out 0.2s;
-
+			padding: 15px 25px;
+			border: 2px solid var(--accent);
+			border-radius: 40px;
+			color: var(--accent);
+			background-color: transparent;
+			cursor: pointer;
+			position: relative;
+			overflow: hidden;
+			z-index: 1;
+		}
+	
 		&::before {
 			content: '';
 			position: absolute;
@@ -28,20 +28,22 @@
 			height: 100%;
 			width: 0;
 			background-color: var(--accent);
-			transition: width 0.5s ease-in-out;
-			z-index: 1;
+			transition: width 1s ease-in-out;
+			z-index: -1;
 		}
-
+	
 		&:hover::before {
 			width: 100%;
 		}
-		&:hover {
+	
+		.link:hover {
+			background-color: var(--accent);
 			color: var(--white) !important;
 		}
-
-		&__container {
+	
+		.link__container {
 			display: flex;
 			gap: 80px;
 		}
 	}
-}
+

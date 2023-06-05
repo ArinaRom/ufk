@@ -5,8 +5,8 @@ const Manual = () => {
 	return (
 		<ContentContainer title={'Инструкция использования сервиса'}>
 			<div className="manual-page">
-				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores perspiciatis fugit molestiae distinctio laudantium maxime deleniti magnam cupiditate. Ducimus magni repudiandae culpa, exercitationem sed debitis modi reiciendis hic! Corporis, quam.</p>
-				<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum nostrum molestiae ad necessitatibus voluptates incidunt, ex iusto minima quod iure explicabo, blanditiis accusamus similique dignissimos? Ratione neque pariatur voluptate quod.</p>
+				<p>Если вы хотите написать новое обращение, то необходимо заполнить все обязательные поля (они отмечены звездочкой). Если знаете в какой отдел лучше отправить заявление, то выберете из перечисленных.</p>
+				<p>Если вы диспетчер, то необходимо зайти под логином и паролем, под которыми вы зарегистрированы. Необходимо проверить заявления, которые есть в вашем списке и оптравить в отдел, который занимается данной проблемой, описанной в заявлении. Если система выделяет ошибочные поля, то необходимо проверить описание проблемы и выбрать подходящие поля.</p>
 			</div>
 		</ContentContainer>
 	)

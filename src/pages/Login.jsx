@@ -11,10 +11,9 @@ const Login = ({setToken}) => {
 
   const onFinish = ({username, password, remember}) => {
 		console.log('test')
-    if (username === 'admin' && password === 'password') {
-      setToken(true);
+    // if (username === 'admin' && password === 'password') {
 			navigate('/notice/list')
-    }
+    // }
   };
 
 	return (

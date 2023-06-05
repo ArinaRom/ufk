@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout, Menu, Alert, Space } from 'antd';
+import { Layout, Menu} from 'antd';
 import { Outlet, NavLink, useLocation } from 'react-router-dom'
 
 import logo from './assets/images/logo.png'
@@ -30,7 +30,7 @@ const App = () => {
 					<div className="logo__icon__wrapper">
 						<img src={logo} alt="logo" className="logo__icon" />
 					</div>
-					<div className="logo__title">Просто большая биба</div>
+					<div className="logo__title">Управление Федерального Казначейства</div>
 				</NavLink>
 				<Menu
           theme="light"
@@ -47,7 +47,7 @@ const App = () => {
       <Content className='main'>
         <Outlet/>
       </Content>
-      <Footer style={{ textAlign: 'center' }}>Ant Design ©2023 Created by Ant UED</Footer>
+      <Footer style={{ textAlign: 'center' }}>©2023 Управление Федерального казначейства</Footer>
     </Layout>
 	)
 }

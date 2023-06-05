@@ -10,18 +10,16 @@ function getItem(label, key, icon, children, type) {
 }
 const items = [
 	getItem('Программы', 'sub1', null, [
-		getItem('1С Битрикс', 'g1', null, [getItem('Option 1', '1'), getItem('Option 2', '2')]),
-		getItem('Мой Склад', 'g2', null, [getItem('Option 3', '3'), getItem('Option 4', '4')]),
+		getItem('Список обращений', 'g1', null, [getItem('Заявление 12215', '3'), getItem('Заявление 12213', '4'), getItem('Заявление 12214', '1')],),
 	]),
-	getItem('Ошибки', 'sub2', null, [
-		getItem('Смерть 13', '5'),
-		getItem('Погибель 404', 'sub3', null, [getItem('Option 7', '7'), getItem('Option 8', '8')]),
+	getItem('Завершенные', 'sub2', null, [
+		getItem('Заявление 12211', '5'),
+		getItem('Заявление 12212', '6'),
 	]),
-	getItem('Отделы отправления', 'sub4', null, [
-		getItem('Option 9', '9'),
-		getItem('Option 10', '10'),
-		getItem('Option 11', '11'),
-		getItem('Option 12', '12'),
+	getItem('Отказанные', 'sub3', null, [
+		getItem('Заявление 12210', '9'),
+		getItem('Заявление 12209', '10'),
+		getItem('Заявление 12208', '11'),
 	]),
 ];
 
