@@ -5,6 +5,54 @@ import { useNavigate } from "react-router-dom";
 
 import { ContentContainer } from '../components';
 
+
+// Подключение к базе данных
+const { Pool } = require('pg');
+const pool = new Pool({
+  user: 'postgres',
+  password: '123456',
+  host: 'localhost',
+  port: 5432,
+  database: 'servise_yfk'
+});
+
+// Функция для проверки авторизации пользователя
+async function checkAuthorization(username, password) {
+  try {
+    // Формируем SQL-запрос для проверки совпадения имени пользователя и пароля
+    const query = `SELECT * FROM Dispatcher WHERE Login = ${username} AND Pass =${password} `;
+    const values = [username, password];
+    const result = await pool.query(query, values);
+
+    // Если найдена запись с указанным именем пользователя и паролем
+    if (result.rows.length > 0) {
+      return true; // Авторизация прошла успешно
+    } else {
+      return false; // Авторизация не удалась
+    }
+  } catch (error) {
+    throw error;
+  }
+}
+
+// Пример использования функции проверки авторизации
+const username = 'пользователь';
+const password = 'пароль';
+
+checkAuthorization(username, password)
+  .then(authorized => {
+    if (authorized) {
+      console.log('Пользователь авторизован');
+      // Дополнительные действия для авторизованного пользователя
+    } else {
+      console.log('Ошибка авторизации');
+      // Действия в случае неудачной авторизации
+    }
+  })
+  .catch(error => {
+    console.error('Ошибка при проверке авторизации:', error);
+  });
+
 const Login = ({setToken}) => {
 	const [form] = Form.useForm();
 	const navigate = useNavigate();
