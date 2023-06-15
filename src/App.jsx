@@ -1,54 +1,53 @@
 import React from 'react'
-import { Layout, Menu} from 'antd';
-import { Outlet, NavLink, useLocation } from 'react-router-dom'
+import {RouterProvider, createBrowserRouter} from "react-router-dom";
+import { AuthContext } from './Context';
+import { useToken } from './hooks/useToken';
 
-import logo from './assets/images/logo.png'
+import {ErrorPage, Main, Notice, Login, Manual} from './pages/index';
+import AppContainer from './components/AppContainer';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <AppContainer/>,
+    errorElement: <ErrorPage/>,
+    children: [
+      {
+        path: '',
+        element: <Main/>,
+      },
+      {
+        path: 'notice',
+        element: <Notice/>,
+      },
+      {
+        path: 'notice/list',
+        element: <Notice/>,
+      },
+      {
+        path: 'notice/:id',
+        element: <Notice/>,
+      },
+      {
+        path: 'login',
+        element: <Login/>
+      },
+      {
+        path: 'manual',
+        element: <Manual/>
+      }
+    ]
+  },
+]);
+
 
 const App = () => {
-	const { Header, Content, Footer } = Layout;
-	const menuItems = [
-		{
-			label: 'Новое обращение',
-			route: '/notice',
-		},
-		{
-			label: 'Инструкция',
-			route: '/manual',
-		},
-		{
-			label: 'Авторизация диспетчера',
-			route: '/login',
-		},
-	]
-
-	const {pathname} = useLocation();
+	const { token, addToken, removeToken } = useToken();
 
 	return (
-		<Layout className="app">
-      <Header style={{ backgroundColor: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <NavLink to="/" className="logo">
-					<div className="logo__icon__wrapper">
-						<img src={logo} alt="logo" className="logo__icon" />
-					</div>
-					<div className="logo__title">Управление Федерального Казначейства</div>
-				</NavLink>
-				<Menu
-          theme="light"
-          mode="horizontal"
-          selectedKeys={pathname}
-          items={menuItems.map(el => {
-						return {
-							label: <NavLink to={el.route}>{el.label}</NavLink>,
-							key: el.route
-						}
-					})}
-        />
-      </Header>
-      <Content className='main'>
-        <Outlet/>
-      </Content>
-      <Footer style={{ textAlign: 'center' }}>©2023 Управление Федерального казначейства</Footer>
-    </Layout>
+		<AuthContext.Provider value={{ token, addToken, removeToken }}>
+			<RouterProvider router={router} />
+		</AuthContext.Provider>
 	)
 }
 
