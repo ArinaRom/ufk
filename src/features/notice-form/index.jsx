@@ -40,20 +40,20 @@ export const NoticeForm = ({ refetch, clearForm }) => {
 
 
 	useEffect(() => {
+		getOptions()
+	}, [])
+
+	useEffect(() => {
 		if(state?.id){
 			request.post("api/applications/getById", { id: state.id }).then(data => form.setFieldsValue(data))
 		}
 	}, [state])
 
-	useEffect(() => {
-		getOptions()
-	}, [])
-
 	const programIdValue = form.getFieldValue("programId")
 
 	useEffect(() => {
 		setSubsystem(programs?.find(el => el.id === programIdValue)?.subsystems)
-	}, [programIdValue])
+	}, [programIdValue, programs])
 
 	const getOptions = async () => {
 		try {
