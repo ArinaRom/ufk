@@ -1,7 +1,7 @@
 import React from 'react';
 import {ContentContainer} from '../components';
 
-const Manual = () => {
+export const ManualPage = () => {
 	return (
 		<ContentContainer title={'Инструкция использования сервиса'}>
 			<div className="manual-page">
@@ -12,4 +12,3 @@ const Manual = () => {
 	)
 }
 
-export default Manual

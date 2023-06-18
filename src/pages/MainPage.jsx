@@ -1,7 +1,8 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-const Main = () => {
+export const MainPage = () => {
+
 	return (
 		<div className='main-page'>
 			<h2>Система обращений</h2>
@@ -14,4 +15,3 @@ const Main = () => {
 	)
 }
 
-export default Main

@@ -1,9 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 import { Button, Form, Input, Select, message } from 'antd';
-import { minLengthValidator } from '../utils/validators'
+import { minLengthValidator } from '../shared/lib/validators'
 
-const {TextArea} = Input;
+const { TextArea } = Input;
+
 const formItemLayout = {
   labelCol: { span: 7 },
   wrapperCol: { span: 8 },

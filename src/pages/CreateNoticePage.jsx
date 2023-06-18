@@ -1,8 +1,9 @@
 import React from 'react'
-import axios from 'axios';
 import { Layout, Menu } from 'antd';
-import { ContentContainer, NoticeForm } from '../components';
+import { ContentContainer } from '../components';
 import { useParams, useLocation } from 'react-router-dom';
+import { NoticeForm } from '../features';
+import { request } from '../shared/api';
 
 const { Content } = Layout;
 
@@ -25,7 +26,7 @@ const items = [
 	]),
 ];
 
-const Notice = () => {
+export const CreateNoticePage = () => {
 	const {id: noticeId} = useParams();
 	const location = useLocation();
 	const isEdit = !!noticeId || (location.pathname === '/notice/list');
@@ -40,7 +41,7 @@ const Notice = () => {
 
 	const getTransactions = async () => {
 		try {
-			const {data} = await axios.get('http://localhost:5000/api/applications')
+			const {data} = await request.get('api/applications')
 
 			const complitedApplications = [];
 			const rejectedApplications = [];
@@ -79,38 +80,36 @@ const Notice = () => {
 	return (
 		<React.Fragment>
 			{
-				isEdit ? (
-					<ContentContainer withoutGap={true}>
-						<Layout style={{ padding: '24px 0', width: 920, height: 780, background: 'var(--white)', display: 'grid', gridTemplateColumns: '256px 1fr'}}>
-							<div width={256} style={{height: '100%', overflow: 'auto'}}>
-								<Menu
-									style={{height: '100%'}}
-									onClick={onClick}
-									defaultOpenKeys={['sub1']}
-									selectedKeys={[currentNotice]}
-									mode="inline"
-									items={menuItems}
-								/>
-							</div>
-							<Content style={{ padding: '24px', minHeight: 280, position: 'relative' }}>
-								{
-									currentNotice != null ?
-									<NoticeForm isEdit={true} /> :
-									<p style={{position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', fontSize: 16, opacity: 0.6}}>Выберете заявку для проверки.</p>
-								}
-							</Content>
-						</Layout>
-					</ContentContainer>
-				) : (
+				// isEdit ? (
+				// 	<ContentContainer withoutGap={true}>
+				// 		<Layout style={{ padding: '24px 0', width: 920, height: 780, background: 'var(--white)', display: 'grid', gridTemplateColumns: '256px 1fr'}}>
+				// 			<div width={256} style={{height: '100%', overflow: 'auto'}}>
+				// 				<Menu
+				// 					style={{height: '100%'}}
+				// 					onClick={onClick}
+				// 					defaultOpenKeys={['sub1']}
+				// 					selectedKeys={[currentNotice]}
+				// 					mode="inline"
+				// 					items={menuItems}
+				// 				/>
+				// 			</div>
+				// 			<Content style={{ padding: '24px', minHeight: 280, position: 'relative' }}>
+				// 				{
+				// 					currentNotice != null ?
+				// 					<NoticeForm isEdit={true} /> :
+				// 					<p style={{position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', fontSize: 16, opacity: 0.6}}>Выберете заявку для проверки.</p>
+				// 				}
+				// 			</Content>
+				// 		</Layout>
+				// 	</ContentContainer>
+				// ) : (
 					<ContentContainer title={'Создание заявления'}>
 						<Content style={{ padding: '24px', width: 920, minHeight: 718 }}>
 							<NoticeForm/>
 						</Content>
 					</ContentContainer>
-				)
+				// )
 			}
 		</React.Fragment>
 	)
 }
-
-export default Notice
